@@ -1,0 +1,367 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --moderate-blue: hsl(238, 40%, 52%);
+  --soft-red: hsl(358, 79%, 66%);
+  --light-grayish-blue: hsl(239, 57%, 85%);
+  --pale-red: hsl(357, 100%, 86%);
+  --dark-blue: hsl(212, 24%, 26%);
+  --grayish-blue: hsl(211, 10%, 45%);
+  --light-gray: hsl(223, 19%, 93%);
+  --very-light-gray: hsl(228, 33%, 97%);
+  --white: hsl(0, 0%, 100%);
+}
+
+body{
+  font-family: "Rubik", sans-serif !important;
+  font-size: 16px !important;
+  background-color: var(--very-light-gray) !important;
+  color: var(--grayish-blue) !important;
+}
+
+#root{
+  min-width: 100%;
+  padding: 2rem 1rem .5rem;
+}
+
+.container{
+  max-width: 730px !important;
+}
+
+.comment-container{
+  background-color: var(--white);
+  border-radius: 10px;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 30px auto 1fr;
+  grid-template-areas:
+    "photo username date"
+    "content content content"
+    "score score buttons";
+  align-items: center;
+  gap: 1rem;
+}
+
+.comment-photo{
+  grid-area: photo;
+}
+
+.comment-username{
+  grid-area: username;
+  font-size: 1rem;
+  color: var(--dark-blue);
+  font-weight: 600;
+}
+
+.current-user{
+  background-color: var(--moderate-blue);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 2px 5px;
+  font-size: .9rem;
+}
+
+.comment-date{
+  grid-area: date;
+  font-size: 1rem;
+  color: var(--grayish-blue);
+  font-size: 400;
+}
+
+.comment-content{
+  grid-area: content;
+  color: var(--grayish-blue);
+  font-size: .96rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  word-wrap: break-word;
+  align-self: start;
+}
+
+.comment-score{
+  grid-area: score;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: .7rem;
+  background-color: var(--very-light-gray);
+  padding: .5rem .7rem;
+  border-radius: 10px;
+  width: max-content;
+}
+
+.comment-score .btn{
+  width: 20px;
+  height: 20px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comment-score p{
+  color: var(--moderate-blue);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.comment-buttons{
+  grid-area: buttons;
+  justify-self: end;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.btn-reply{
+  background-color: white !important;
+  color: var(--moderate-blue) !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  border: none !important;
+}
+
+.btn-delete{
+  background-color: white !important;
+  color: var(--soft-red) !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  border: none !important;
+}
+
+.btn-edit{
+  background-color: white !important;
+  color: var(--moderate-blue) !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  border: none !important;
+}
+
+.btn-reply:hover,
+.btn-delete:hover,
+.btn-edit:hover,
+.btn-cancel:hover,
+.btn-send:hover{
+  opacity: .8;
+}
+
+.reply-wrapper{
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.reply-wrapper::before{
+  content: "";
+  width: 1px;
+  background-color: var(--light-grayish-blue);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 4px;
+}
+
+.replying-to{
+  color: var(--moderate-blue);
+  font-size: .9rem;
+  font-weight: 700;
+}
+
+.reply-form-div{
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+
+.reply-form{
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  grid-template-areas:
+    "textarea textarea"
+    "photo button";
+  align-items: center;
+  gap: 1rem;
+}
+
+.reply-form img{
+  grid-area: photo;
+}
+
+.reply-form textarea{
+  grid-area: textarea;
+  resize: none;
+  border: 1px solid var(--light-gray);
+  border-radius: 10px;
+  padding: .7rem 1rem;
+  font-size: 1rem;
+  color: var(--grayish-blue);
+  line-height: 1.5rem;
+}
+
+.reply-form textarea:focus,
+.edit-form textarea:focus{
+  outline: none;
+  border: 1px solid var(--moderate-blue);
+}
+
+.reply-form .btn{
+  grid-area: button;
+  justify-self: end;
+  max-width: 300px;
+  padding: .8rem 1rem;
+  background-color: var(--moderate-blue);
+  border-radius: 10px;
+  color: white;
+  font-size: .9rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.edit-form-div{
+  background-color: white;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.edit-form{
+  display: grid;
+  grid-template-columns: 30px auto 1fr;
+  grid-template-areas:
+    "photo username date"
+    "textarea textarea textarea"
+    "score score button";
+  gap: 1rem;
+}
+
+.edit-form textarea{
+  grid-area: textarea;
+  resize: none;
+  border: 1px solid var(--light-gray);
+  border-radius: 10px;
+  padding: .7rem 1rem;
+  font-size: 1rem;
+  color: var(--grayish-blue);
+  line-height: 1.5rem;
+}
+
+.edit-form .btn-update{
+  grid-area: button;
+  justify-self: end;
+  max-width: 300px;
+  padding: .8rem 1rem;
+  background-color: var(--moderate-blue);
+  border-radius: 10px;
+  color: white;
+  font-size: .8rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.modal-delete .modal-content{
+  max-width: 380px;
+}
+
+.modal-delete .modal-title{
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--dark-blue);
+}
+
+.modal-delete .btn-cancel{
+  padding: .8rem 1rem;
+  font-size: .9rem;
+  font-weight: 400;
+  background-color: var(--grayish-blue) !important;
+  color: var(--white) !important;
+}
+
+.modal-delete .btn-delete{
+  padding: .8rem 1rem;
+  font-size: .9rem !important;
+  font-weight: 400 !important;
+  background-color: var(--soft-red) !important;
+  color: var(--white) !important;
+}
+
+footer {
+  padding: 3rem 1rem 0;
+}
+
+.attribution {
+  text-align: center;
+  font-size: .8rem;
+  font-weight: 400;
+  color: var(--dark-blue);
+}
+
+.attribution a {
+  text-decoration: none;
+  color: var(--moderate-blue);
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  #root{
+    padding: 4rem 2rem 1rem;
+  }
+
+  .comment-container{
+    padding: 1.5rem;
+    grid-template-columns: 50px 30px auto auto 1fr;
+    grid-template-areas:
+    "score photo username date buttons"
+    "score content content content content";
+  }
+
+  .comment-score{
+    flex-direction: column;
+    align-self: start;
+    gap: .9rem;
+  }
+
+  .reply-wrapper{
+    padding-left: 5rem;
+  }
+
+  .reply-wrapper::before {
+    left: 2.5rem;
+  }
+
+  .reply-form{
+    grid-template-columns: 30px 1fr auto;
+    grid-template-areas:
+    "photo textarea button";
+    align-items: start;
+    row-gap: .5rem;
+  }
+
+  .reply-form .btn{
+    padding: .8rem 1.5rem;
+    justify-self: unset;
+  }
+
+  .edit-form-div{
+    padding: 1.5rem;
+  }
+
+  .edit-form{
+    grid-template-columns: 50px 30px auto auto 1fr;
+    grid-template-areas:
+      "score photo username date button"
+      "score textarea textarea textarea textarea";
+    align-items: center;
+  }
+
+  .edit-form .btn-update{
+    padding: .6rem 1.3rem;
+  }
+}
