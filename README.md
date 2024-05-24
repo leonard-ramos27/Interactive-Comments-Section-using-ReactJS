@@ -33,8 +33,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here]
-- Live Site URL: [Add live site URL here]
+- Solution URL: [Link to Solution](https://github.com/leonard-ramos27/Interactive-Comments-Section-using-ReactJS.git)
+- Live Site URL: [Link to Live Site](https://leonard-ramos27.github.io/Interactive-Comments-Section-using-ReactJS/)
 
 ## My process
 

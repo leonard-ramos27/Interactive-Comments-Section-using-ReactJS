@@ -7,4 +7,5 @@ export default defineConfig({
   resolve: {
     mainFields: [],
   },
+  base: "/Interactive-Comments-Section-using-ReactJS/"
 })
