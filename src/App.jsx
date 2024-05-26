@@ -12,6 +12,7 @@ function App() {
     return JSON.parse(localData)
   })
   const currentUser = data.currentUser
+  const [replayingPostId, setReplayingPostId] = useState(null)
 
   useEffect(()=>{
     localStorage.setItem("interactive-comments-data", JSON.stringify(comments))
@@ -163,7 +164,9 @@ function App() {
             onDownvote={downVote} 
             onReply={addReply}
             onDelete={deleteComment}
-            onEdit={editComment}>
+            onEdit={editComment}
+            setReplayingPostId={setReplayingPostId}
+            replayingPostId={replayingPostId}>
             {comment.replies && <div className="reply-wrapper">
               {comment.replies.map(reply => (
                 <div key={reply.id}>
@@ -173,7 +176,9 @@ function App() {
                     onDownvote={downVote}
                     onReply={addReply}
                     onDelete={deleteReply}
-                    onEdit={editComment} />
+                    onEdit={editComment}
+                    setReplayingPostId={setReplayingPostId}
+                    replayingPostId={replayingPostId} />
                 </div>
               ))}  
             </div>}

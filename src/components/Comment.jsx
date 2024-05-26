@@ -12,7 +12,7 @@ import ReplyIcon from "../assets/images/icon-reply.svg"
 import EditIcon from "../assets/images/icon-edit.svg"
 import DeleteIcon from "../assets/images/icon-delete.svg"
 
-function Comment({comment, children, onUpvote, onDownvote, onReply, onDelete, onEdit}){
+function Comment({comment, children, onUpvote, onDownvote, onReply, onDelete, onEdit, replayingPostId, setReplayingPostId}){
     const user = useContext(UserContext)
     const [showReplyForm, setShowReplyForm] = useState(false)
     const [showEditForm, setShowEditForm] = useState(false)
@@ -21,7 +21,7 @@ function Comment({comment, children, onUpvote, onDownvote, onReply, onDelete, on
 
     const handleReply = (content) => {
         onReply(content, comment.id)
-        setShowReplyForm(!showReplyForm)
+        setReplayingPostId(null)
     }
 
     const handleEdit = (content) => {
@@ -67,9 +67,9 @@ function Comment({comment, children, onUpvote, onDownvote, onReply, onDelete, on
                 </>
                 : <Button
                     className="btn-reply"
-                    onClick={() => setShowReplyForm(!showReplyForm)}
+                    onClick={() => setReplayingPostId(comment.id)}
                     aria-controls={replyFormID}
-                    aria-expanded={showReplyForm}>
+                    aria-expanded={replayingPostId === comment.id}>
                     <img src={ReplyIcon} alt="reply icon" className="me-1"/>
                     Reply
                 </Button>
@@ -104,7 +104,7 @@ function Comment({comment, children, onUpvote, onDownvote, onReply, onDelete, on
             </>
             : <ReplyForm 
                 handleSubmit={handleReply} 
-                showReplyForm={showReplyForm} 
+                showReplyForm={replayingPostId === comment.id} 
                 replyFormID={replyFormID}
             />
         }
